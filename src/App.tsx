@@ -191,7 +191,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Entrance/ Walkway: </label>
+          <label style={{ marginRight: "15px" }}>🔵 Entrance/ Walkway: </label>
           <input
             type="number"
             onChange={handleEntWalk}
@@ -202,7 +202,7 @@ function App() {
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Dining: </label>
+          <label style={{ marginRight: "15px" }}>🔴 Dining: </label>
           <input
             type="number"
             onChange={handleDining}
@@ -213,7 +213,7 @@ function App() {
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Yard/ Store: </label>
+          <label style={{ marginRight: "15px" }}>🟤 Yard/ Store: </label>
           <input
             type="number"
             onChange={handleYardStore}
@@ -224,7 +224,7 @@ function App() {
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Kitchen/ Bathroom: </label>
+          <label style={{ marginRight: "15px" }}>🟡 Kitchen/ Bathroom: </label>
           <input
             type="number"
             onChange={handleKitchen}
@@ -235,7 +235,7 @@ function App() {
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Bedroom/Study: </label>
+          <label style={{ marginRight: "15px" }}>🟢 Bedroom/Study: </label>
           <input
             type="number"
             onChange={handleBedroom}
@@ -246,7 +246,7 @@ function App() {
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Balcony: </label>
+          <label style={{ marginRight: "15px" }}>🟠 Balcony: </label>
           <input
             type="number"
             onChange={handleBalcony}
@@ -257,7 +257,7 @@ function App() {
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Master: </label>
+          <label style={{ marginRight: "15px" }}>🔹 Master: </label>
           <input
             type="number"
             onChange={handleMaster}
@@ -268,7 +268,7 @@ function App() {
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Living: </label>
+          <label style={{ marginRight: "15px" }}>⚫Living: </label>
           <input
             type="number"
             onChange={handleLiving}
