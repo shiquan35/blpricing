@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
@@ -12,15 +11,14 @@ function App() {
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [totalUP, setTotalUP] = useState<number>(0);
 
-  const [fanInputValue, setFanInputValue] = useState<string>("");
-  const [lightInputValue, setLightInputValue] = useState<string>("");
-
   // each lights count
-  const [entWalkBathNum, setEntWalkBathNum] = useState<number>(0);
-  const [kitchenNum, setKitchenNum] = useState<number>(0);
+  const [entWalkNum, setEntWalkNum] = useState<number>(0);
+  const [kitchenBathNum, setKitchenBathNum] = useState<number>(0);
+  const [diningNum, setDiningNum] = useState<number>(0);
+  const [yardStoreNum, setYardStoreNum] = useState<number>(0);
   const [bedroomNum, setBedroomNum] = useState<number>(0);
   const [balconyNum, setBalconyNum] = useState<number>(0);
-  const [diningMasterNum, setDiningMasterNum] = useState<number>(0);
+  const [masterNum, setMasterNum] = useState<number>(0);
   const [livingNum, setLivingNum] = useState<number>(0);
 
   const calcInstall = (fanNum: number, lightNum: number) => {
@@ -32,49 +30,65 @@ function App() {
   const calcTotal = (
     totalInstall: number,
     entWalkBathNum: number,
-    kitchenNum: number,
+    kitchenBathNum: number,
     bedroomNum: number,
     balconyNum: number,
-    diningMasterNum: number,
-    livingNum: number
+    masterNum: number,
+    livingNum: number,
+    diningNum: number,
+    yardStoreNum: number
   ) => {
     const total =
       totalInstall +
       entWalkBathNum * 18 +
-      kitchenNum * 28 +
+      kitchenBathNum * 28 +
       bedroomNum * 40 +
       balconyNum * 55 +
-      diningMasterNum * 69 +
-      livingNum * 198;
+      masterNum * 69 +
+      livingNum * 198 +
+      diningNum * 45 +
+      yardStoreNum * 28;
     setTotalPrice(total);
   };
 
   const calcUsualTotal = (
     totalInstall: number,
     entWalkBathNum: number,
-    kitchenNum: number,
+    kitchenBathNum: number,
     bedroomNum: number,
     balconyNum: number,
     diningMasterNum: number,
-    livingNum: number
+    livingNum: number,
+    diningNum: number,
+    yardStoreNum: number
   ) => {
     const total =
       totalInstall +
       entWalkBathNum * 25 +
-      kitchenNum * 40 +
+      kitchenBathNum * 40 +
       bedroomNum * 69 +
       balconyNum * 79 +
       diningMasterNum * 115 +
-      livingNum * 218;
+      livingNum * 218 +
+      diningNum * 85 +
+      yardStoreNum * 40;
     setTotalUP(total);
   };
 
-  const handleEntWalkBath = (event: any) => {
-    setEntWalkBathNum(Number(event.target.value));
+  const handleEntWalk = (event: any) => {
+    setEntWalkNum(Number(event.target.value));
+  };
+
+  const handleDining = (event: any) => {
+    setDiningNum(Number(event.target.value));
+  };
+
+  const handleYardStore = (event: any) => {
+    setYardStoreNum(Number(event.target.value));
   };
 
   const handleKitchen = (event: any) => {
-    setKitchenNum(Number(event.target.value));
+    setKitchenBathNum(Number(event.target.value));
   };
 
   const handleBedroom = (event: any) => {
@@ -85,8 +99,8 @@ function App() {
     setBalconyNum(Number(event.target.value));
   };
 
-  const handleDiningMaster = (event: any) => {
-    setDiningMasterNum(Number(event.target.value));
+  const handleMaster = (event: any) => {
+    setMasterNum(Number(event.target.value));
   };
 
   const handleLiving = (event: any) => {
@@ -95,9 +109,23 @@ function App() {
 
   useEffect(() => {
     setLightNum(
-      entWalkBathNum + kitchenNum + bedroomNum + balconyNum + diningMasterNum
+      entWalkNum +
+        kitchenBathNum +
+        bedroomNum +
+        balconyNum +
+        masterNum +
+        diningNum +
+        yardStoreNum
     );
-  }, [entWalkBathNum, kitchenNum, bedroomNum, balconyNum, diningMasterNum]);
+  }, [
+    entWalkNum,
+    kitchenBathNum,
+    bedroomNum,
+    balconyNum,
+    masterNum,
+    diningNum,
+    yardStoreNum,
+  ]);
 
   useEffect(() => {
     setFanNum(livingNum);
@@ -111,64 +139,103 @@ function App() {
   useEffect(() => {
     calcTotal(
       totalInstall,
-      entWalkBathNum,
-      kitchenNum,
+      entWalkNum,
+      kitchenBathNum,
       bedroomNum,
       balconyNum,
-      diningMasterNum,
-      livingNum
+      masterNum,
+      livingNum,
+      diningNum,
+      yardStoreNum
     );
 
     calcUsualTotal(
       totalInstall,
-      entWalkBathNum,
-      kitchenNum,
+      entWalkNum,
+      kitchenBathNum,
       bedroomNum,
       balconyNum,
-      diningMasterNum,
-      livingNum
+      masterNum,
+      livingNum,
+      diningNum,
+      yardStoreNum
     );
   }, [
     totalInstall,
-    entWalkBathNum,
-    kitchenNum,
+    entWalkNum,
+    kitchenBathNum,
     bedroomNum,
     balconyNum,
-    diningMasterNum,
+    masterNum,
     livingNum,
+    diningNum,
+    yardStoreNum,
   ]);
+
+  const handleReset = () => {
+    setBalconyNum(0);
+    setBedroomNum(0);
+    setDiningNum(0);
+    setEntWalkNum(0);
+    setFanNum(0);
+    setKitchenBathNum(0);
+    // setLightNum(0);
+    setLivingNum(0);
+    setMasterNum(0);
+    setYardStoreNum(0);
+    // setTotalInstall(0);
+    // setTotalLightsNum(0);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Floorplan calculator</h1>
-
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>
-            Entrance/ Walkway/ Bathroom:{" "}
-          </label>
+          <label style={{ marginRight: "15px" }}>Entrance/ Walkway: </label>
           <input
             type="number"
-            onChange={handleEntWalkBath}
-            value={entWalkBathNum}
+            onChange={handleEntWalk}
+            value={entWalkNum}
             style={{ width: "30px" }}
           ></input>
         </div>
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Kitchen: </label>
+          <label style={{ marginRight: "15px" }}>Dining: </label>
+          <input
+            type="number"
+            onChange={handleDining}
+            value={diningNum}
+            style={{ width: "30px" }}
+          ></input>
+        </div>
+        <br />
+
+        <div className="inputField">
+          <label style={{ marginRight: "15px" }}>Yard/ Store: </label>
+          <input
+            type="number"
+            onChange={handleYardStore}
+            value={yardStoreNum}
+            style={{ width: "30px" }}
+          ></input>
+        </div>
+        <br />
+
+        <div className="inputField">
+          <label style={{ marginRight: "15px" }}>Kitchen/ Bathroom: </label>
           <input
             type="number"
             onChange={handleKitchen}
-            value={kitchenNum}
+            value={kitchenBathNum}
             style={{ width: "30px" }}
           ></input>
         </div>
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Bedroom 2/3: </label>
+          <label style={{ marginRight: "15px" }}>Bedroom/Study: </label>
           <input
             type="number"
             onChange={handleBedroom}
@@ -190,11 +257,11 @@ function App() {
         <br />
 
         <div className="inputField">
-          <label style={{ marginRight: "15px" }}>Dining/ Master: </label>
+          <label style={{ marginRight: "15px" }}>Master: </label>
           <input
             type="number"
-            onChange={handleDiningMaster}
-            value={diningMasterNum}
+            onChange={handleMaster}
+            value={masterNum}
             style={{ width: "30px" }}
           ></input>
         </div>
@@ -221,6 +288,7 @@ function App() {
 
         <label>Usual Price: {`$${totalUP}`}</label>
         <br />
+        <button onClick={handleReset}>Reset</button>
       </header>
     </div>
   );
